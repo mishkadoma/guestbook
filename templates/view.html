@@ -1,0 +1,18 @@
+
+
+<!doctype html>
+  <html>
+    <head>
+      <meta content="initial-scale=1, width=device-width" name="viewport"/>
+      <title>View all posts</title>
+    </head>
+    <body>
+      <h1>Messages:</h1>
+      from: <br />
+        {{ name }}
+      whom sent a message:<br />
+        {{ post }}
+        <hr />
+    <a href='{{ url_for('index') }}'>main page</a>
+    </body>
+  </html>

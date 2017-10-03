@@ -1,0 +1,17 @@
+<!doctype html>
+  <html>
+    <head>
+      <meta content="initial-scale=1, width=device-width" name="viewport"/>
+      <title>Send a post</title>
+    </head>
+    <body>
+      <h1>Welcome to our guestbook</h1>
+      <form action="{{ url_for("posts") }}" method="post">
+        Name: <input type="text" name="name" />
+        <br />
+        Post: <input type="text" name="post" />
+        <br />
+        <input type="submit" name="submit" value="submit">
+      </form>
+    </body>
+  </html>
