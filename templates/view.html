@@ -7,12 +7,16 @@
       <title>View all posts</title>
     </head>
     <body>
+      {% if name %}
       <h1>Messages:</h1>
       from: <br />
         {{ name }}<br />
       whom sent a message:<br />
         {{ post }}
         <hr />
+      {% else %}
+        <p>You hadn't provided your name</p>
+      {% endif %}
     <a href='{{ url_for('index') }}'>main page</a>
     </body>
   </html>
