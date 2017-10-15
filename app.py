@@ -4,19 +4,23 @@ from flask_sqlalchemy import SQLAlchemy
 app = Flask(__name__)
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
+
 @app.route("/")
 def index():
     return render_template('index.html')
 
+
 @app.route('/view')
 def view():
     return render_template('view.html')
+
 
 @app.route('/posts', methods=['POST'])
 def posts():
     name = request.form['name']
     post = request.form['post']
     return render_template('view.html', name=name, post=post)
+
 
 if __name__ == '__main__':
     app.run(debug=True, host='0.0.0.0', port=8080)
