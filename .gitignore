@@ -1,6 +1,6 @@
 database.db
 database_config
-database_entry
+database_entry.py
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
