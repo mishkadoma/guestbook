@@ -1,5 +1,5 @@
 database.db
-database_config
+config.ini
 database_entry.py
 
 # Byte-compiled / optimized / DLL files
