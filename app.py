@@ -30,13 +30,16 @@ def view():
 def posts():
     name = request.form['name']
     post = request.form['post']
+    if name == '' or post == '':
+        return render_template('index.html', blank=True)
+    else:
+        signature = Posts(name=name, comment=post)
+        db.session.add(signature)
+        db.session.commit()
 
-    signature = Posts(name=name, comment=post)
-    db.session.add(signature)
-    db.session.commit()
-
-    result = Posts.query.all()
-    return render_template('view.html', result=result)
+        result = Posts.query.all()
+        reversed(result)
+        return render_template('view.html', result=result)
 
 
 if __name__ == '__main__':
