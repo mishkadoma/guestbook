@@ -12,7 +12,7 @@
       from:
         {{ each.name }}<br />
       whom sent a message:<br />
-        {{ each.comment }}
+        <em>{{ each.comment }}</em>
         <hr />
       {% endfor %}
     <a href='{{ url_for('index') }}'>main page</a>
