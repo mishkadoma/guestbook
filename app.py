@@ -25,6 +25,13 @@ def index():
 def view():
     return render_template('view.html')
 
+@app.route('/posts/<int:page_num>', methods=['GET'])
+def thread(page_num):
+    threads = Posts.query.paginate(per_page=20, page=page_num, error_out=True)
+
+    return render_template('view.html', result=threads)
+
+
 
 @app.route('/posts', methods=['POST'])
 def posts():
