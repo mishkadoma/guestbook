@@ -27,7 +27,7 @@ def view():
 
 @app.route('/posts/<int:page_num>', methods=['GET'])
 def thread(page_num):
-    threads = Posts.query.paginate(per_page=20, page=page_num, error_out=True)
+    threads = Posts.query.paginate(per_page=5, page=page_num, error_out=True)
 
     return render_template('view.html', result=threads)
 
@@ -46,7 +46,8 @@ def posts():
 
         result = Posts.query.all()
         reversed(result)
-        return render_template('view.html', result=result)
+        return redirect(url_for('thread', page_num=1))
+        # return render_template('view.html', result=result)
 
 
 if __name__ == '__main__':
