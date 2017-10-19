@@ -8,13 +8,22 @@
     </head>
     <body>
       <h1>Messages:</h1>
-      {% for each in result %}
+      {% for each in result.items %}
       from:
         {{ each.name }}<br />
       whom sent a message:<br />
         <em>{{ each.comment }}</em>
         <hr />
       {% endfor %}
+
+      {% for page in result.iter_pages() %}
+        {% if page %}
+          <a href="{{ url_for('thread', page_num=page) }}">{{ page }}</a>
+        {% else %}
+          ...
+        {% endif %}
+      {% endfor %}
+    <br />
     <a href='{{ url_for('index') }}'>main page</a>
     </body>
   </html>
