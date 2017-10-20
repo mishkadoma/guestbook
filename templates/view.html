@@ -16,7 +16,7 @@
         <hr />
       {% endfor %}
 
-      {% for page in result.iter_pages() %}
+      {% for page in result.iter_pages(left_edge=7) %}
         {% if page %}
           <a href="{{ url_for('thread', page_num=page) }}">{{ page }}</a>
         {% else %}
