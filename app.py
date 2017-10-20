@@ -16,6 +16,9 @@ class Posts(db.Model):
     comment = db.Column(db.String(2000))
 
 
+db.create_all()
+
+
 @app.route("/")
 def index():
     return render_template('index.html')
@@ -24,6 +27,22 @@ def index():
 @app.route('/view')
 def view():
     return render_template('view.html')
+
+
+@app.route('/chat', methods=['GET', 'POST'])
+def chat():
+    if request.method == 'POST':
+        chatname = request.form['chatname']
+        message = request.form['message']
+        chat_mes = Posts(name=chatname, comment=message)
+        db.session.add(chat_mes)
+        db.session.commit()
+        result = Posts.query.paginate(per_page=10, page=1, error_out=True)
+
+        return render_template('chat.html', result=result)
+
+    result = Posts.query.paginate(per_page=10, page=1, error_out=True)
+    return render_template('chat.html', result=result)
 
 
 @app.route('/posts/<int:page_num>', methods=['GET'])
