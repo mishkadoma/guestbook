@@ -34,20 +34,27 @@ def chat():
     if request.method == 'POST':
         chatname = request.form['chatname']
         message = request.form['message']
-        chat_mes = Posts(name=chatname, comment=message)
+        chat_mes = Posts(name=chatname,
+                         comment=message)
         db.session.add(chat_mes)
         db.session.commit()
-        result = Posts.query.paginate(per_page=10, page=1, error_out=True)
+        result = Posts.query.paginate(per_page=10,
+                                      page=1,
+                                      error_out=True)
 
         return render_template('chat.html', result=result)
 
-    result = Posts.query.paginate(per_page=10, page=1, error_out=True)
+    result = Posts.query.paginate(per_page=10,
+                                  page=1,
+                                  error_out=True)
     return render_template('chat.html', result=result)
 
 
 @app.route('/posts/<int:page_num>', methods=['GET'])
 def thread(page_num):
-    threads = Posts.query.paginate(per_page=5, page=page_num, error_out=True)
+    threads = Posts.query.paginate(per_page=5,
+                                   page=page_num,
+                                   error_out=True)
 
     return render_template('view.html', result=threads)
 
