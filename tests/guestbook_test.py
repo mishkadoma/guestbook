@@ -1,5 +1,8 @@
-import os, unittest, tempfile
+import os
+import unittest
+import tempfile
 import guestbook as gb
+
 
 class GuestTestCase(unittest.TestCase):
 
