@@ -1,6 +1,7 @@
 database.db
 config.ini
 database_entry.py
+.idea
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
